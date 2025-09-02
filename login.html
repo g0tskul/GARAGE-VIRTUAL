@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .login-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 1.5rem;
+      color: black;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #10b981;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-container button:hover {
+      background: #059669;
+    }
+
+    .login-container p {
+      margin-top: 1rem;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .login-container a {
+      color: #059669;
+      text-decoration: none;
+    }
+
+    .login-container a:hover {
+      text-decoration: underline;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    img {
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="garage.gif">
+  <div class="login-container">
+    <h2>Entrar</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <button type="submit">Login</button>
+      <p id="errorMsg" class="error"></p>
+    </form>
+    <p>Não tem conta? <a href="index.html">Criar Conta</a></p>
+  </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const errorMsg = document.getElementById("errorMsg");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (email.value.trim() === "" || password.value.trim() === "") {
+        errorMsg.textContent = "Preencha todos os campos.";
+        return;
+      }
+
+      if (password.value.length > 6) {
+        errorMsg.textContent = "A senha deve ter no máximo 6 caracteres.";
+        return;
+      }
+
+      alert("Login realizado com sucesso!");
+      errorMsg.textContent = "";
+      form.reset();
+
+      window.location.href = "loja.html";
+    });
+  </script>
+</body>
+</html>
